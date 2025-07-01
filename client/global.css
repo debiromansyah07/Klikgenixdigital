@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Premium Portal Dark Theme
+   * HSL format for tailwind compatibility
+  */
+  :root {
+    /* Premium Portal Colors */
+    --background: 217 67% 8%; /* rgb(6, 21, 37) */
+    --foreground: 0 0% 100%; /* white */
+
+    --card: 210 65% 9%; /* rgb(9, 20, 31) */
+    --card-foreground: 210 14% 89%; /* rgb(229, 231, 235) */
+
+    --popover: 201 65% 14%; /* rgb(7, 43, 63) */
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 177 86% 35%; /* rgb(12, 164, 157) - teal accent */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 65% 9%; /* same as card */
+    --secondary-foreground: 210 9% 84%; /* rgb(209, 213, 219) */
+
+    --muted: 217 67% 8%; /* same as background */
+    --muted-foreground: 210 9% 84%; /* rgb(209, 213, 219) */
+
+    --accent: 177 86% 35%; /* teal accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 201 65% 14%; /* modal blue */
+    --input: 201 65% 14%;
+    --ring: 177 86% 35%; /* teal for focus rings */
+
+    --radius: 0.75rem; /* 12px rounded corners */
+
+    /* Custom Premium Portal Variables */
+    --gradient-primary: linear-gradient(90deg, #9709c9, #1074ac);
+    --gradient-text: linear-gradient(
+      87.55deg,
+      #a0d5ec 1.79%,
+      #287ece,
+      #8ad3fa,
+      #0094e3 110.46%
+    );
+    --success-green: 142 89% 32%; /* rgb(4, 160, 76) */
+  }
+
+  /* Dark mode is the default for Premium Portal */
+  .dark {
+    --background: 217 67% 8%;
+    --foreground: 0 0% 100%;
+    --card: 210 65% 9%;
+    --card-foreground: 210 14% 89%;
+    --popover: 201 65% 14%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 177 86% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 65% 9%;
+    --secondary-foreground: 210 9% 84%;
+    --muted: 217 67% 8%;
+    --muted-foreground: 210 9% 84%;
+    --accent: 177 86% 35%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 201 65% 14%;
+    --input: 201 65% 14%;
+    --ring: 177 86% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Premium Portal Custom Components */
+  .gradient-primary {
+    background: linear-gradient(90deg, #9709c9, #1074ac);
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      87.55deg,
+      #a0d5ec 1.79%,
+      #287ece,
+      #8ad3fa,
+      #0094e3 110.46%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-bg {
+    background:
+      linear-gradient(rgba(6, 21, 37, 0.8), rgba(6, 21, 37, 0.8)),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.08)"/></svg>');
+  }
+
+  .section-spacing {
+    @apply py-32;
+  }
+
+  .container-padding {
+    @apply px-6 md:px-20;
+  }
+
+  .card-padding {
+    @apply p-6;
+  }
+
+  /* Custom Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(12, 164, 157, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(12, 164, 157, 0.3);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slideInRight {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* New animations for login/register */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes bounce-delay {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-bounce-delay {
+    animation: bounce-delay 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.8s ease-out forwards;
+  }
+}
